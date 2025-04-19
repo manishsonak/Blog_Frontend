@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import Cookies from "js-cookie";
 
 export default function PostDetails() {
   const [post, setPost] = useState(null);
@@ -13,9 +14,14 @@ export default function PostDetails() {
     const fetchPostDetails = async () => {
       try {
         setLoading(true);
+        const token = Cookies.get("token");
         
         const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/posts/${slug}`,
+          `${import.meta.env.VITE_API_URL}/posts/${slug}`,{
+            headers: {
+              Authorization: `Bearer ${token}`,
+              },
+          },
           {
             withCredentials: true
           }
