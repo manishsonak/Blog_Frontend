@@ -10,14 +10,11 @@ const ContextProvider = ({ children }) => {
   const [isAdmin, setIsAdmin] = useState(false);
 
   const fetchUser = async () => {
-    const token = Cookies.get("token");
+
     try {
       const response = await axios.get(
         `${import.meta.env.VITE_API_URL}/users/get-user`,
         {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
           withCredentials: true,
         }
       );
