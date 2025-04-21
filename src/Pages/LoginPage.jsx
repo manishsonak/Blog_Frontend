@@ -53,14 +53,14 @@ function LoginPage() {
    
         setIsAuthanticate(true)
         if (response.data.user.email==='admin@gmail.com') {
-          console.log(response.data.user.email);
+    
           
           setIsAdmin(true)
         }
  
         
         setUser(response.data.user)
-        console.log(response.data.user);
+  
         
         toast.success('User Login Sucessfully')
           

@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Cookies from "js-cookie";
+import toast from 'react-hot-toast';
 
 export default function PostDetails() {
   const [post, setPost] = useState(null);
@@ -38,7 +39,8 @@ export default function PostDetails() {
       } catch (err) {
         setError(err.message);
         navigate('/login')
-        console.error('Error fetching post details:', err);
+        toast.error('Error fetching post details');
+
       } finally {
         setLoading(false);
       }

@@ -1,7 +1,9 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import { ContextAPI } from "./ContextAPI";
 import Cookies from "js-cookie";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const ContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
@@ -12,9 +14,14 @@ const ContextProvider = ({ children }) => {
   const fetchUser = async () => {
 
     try {
+
+      const token = Cookies.get('token');
       const response = await axios.get(
         `${import.meta.env.VITE_API_URL}/users/get-user`,
         {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
           withCredentials: true,
         }
       );
@@ -31,7 +38,7 @@ const ContextProvider = ({ children }) => {
       setUser(null);
       setIsAuthanticate(false);
       Cookies.remove("token");
-      console.error("Error fetching user:", error);
+      toast.error('Error fetaching users')
     }
   };
 

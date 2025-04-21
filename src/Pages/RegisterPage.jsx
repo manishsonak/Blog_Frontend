@@ -81,7 +81,7 @@ function RegisterPage() {
 
   
       }catch (error) {
-        console.log(error);
+
         
         const errors = error?.response?.data?.errors;
         const message = error?.response?.data?.message;
@@ -120,7 +120,7 @@ function RegisterPage() {
             }
           )
 
-          console.log(response);
+    
           
           if(response.status===200){
             toast.success(response.data.message)
@@ -134,7 +134,7 @@ function RegisterPage() {
           }
           
         } catch (error) {
-          console.log(error);
+  
           
           const errors = error?.response?.data?.errors;
           const message = error?.response?.data?.msg;

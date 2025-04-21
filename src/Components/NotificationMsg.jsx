@@ -1,5 +1,7 @@
+/* eslint-disable no-unused-vars */
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import toast from 'react-hot-toast';
 
 function NotificationMsg() {
     const [Notifications, setNotifications] = useState([])
@@ -32,7 +34,7 @@ function NotificationMsg() {
 
         }
         catch (error) {
-            console.log(error);
+          toast.error("Someting went worng, Try again later")
             }
     }
 
@@ -40,7 +42,7 @@ function NotificationMsg() {
                 
     
         if(hasMore){
-            console.log('kya baat hai');
+
             
 
             setPage((prev)=>prev+1)

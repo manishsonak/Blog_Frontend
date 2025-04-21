@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState, useEffect, useRef, useCallback } from "react";
 import axios from "axios";
 import { 
@@ -93,7 +94,6 @@ export default function BlogDashboard() {
       setHasMore(response.data.posts?.length === 10);
     } catch (err) {
       toast.error("Failed to fetch posts. Please try again.");
-      console.error("Error fetching posts:", err);
     } finally {
       setLoading(false);
     }
@@ -112,7 +112,7 @@ export default function BlogDashboard() {
       setHasMore(newPosts.length === 10);
     } catch (err) {
       toast.error("Failed to fetch more posts. Please try again.");
-      console.error("Error fetching more posts:", err);
+     
     } finally {
       setLoading(false);
     }
@@ -176,7 +176,7 @@ export default function BlogDashboard() {
     
     try {
       if (isAdding) {
-        console.log(formData);
+     
         
         // Add new post
         const response = await axios.post(
@@ -202,19 +202,19 @@ export default function BlogDashboard() {
       }
     } catch (err) {
       toast.error("Failed to save post. Please try again.");
-      console.error("Error saving post:", err);
+
     }
   };
 
   // Handle post deletion
   const handleDeletePost = async (postId) => {
     try {
-        console.log(postId);
+       
 
         const confirmDelete = window.confirm("Are you sure you want to delete this item?");
         if (!confirmDelete) {
   
-          console.log("Delete cancelled");
+         toast.error('Data Not Deleted')
           return
 
         } 
@@ -230,7 +230,7 @@ export default function BlogDashboard() {
       }
     } catch (err) {
       toast.error("Failed to delete post. Please try again.");
-      console.error("Error deleting post:", err);
+    
     }
   };
 
@@ -269,7 +269,7 @@ export default function BlogDashboard() {
         setFileToUpload(null);
       } catch (err) {
         setError("Failed to upload image. Please try again.");
-        console.error("Error uploading image:", err);
+        
       }
     }
   };

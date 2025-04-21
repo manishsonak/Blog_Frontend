@@ -1,9 +1,11 @@
+/* eslint-disable no-unused-vars */
 import axios from 'axios';
 import { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import LatestArticalCard from '../Components/LatestArticalCard';
 import FeatureCard from '../Components/FeatureCard';
 import { ContextAPI } from '../Context/ContextAPI';
+import toast from 'react-hot-toast';
 
 export default function TechBlog() {
   // Your predefined categories - replace with your actual categories
@@ -70,7 +72,6 @@ export default function TechBlog() {
   
       const response = await axios.get(`${import.meta.env.VITE_API_URL}/posts/getAll-posts?limit=9&page=${page}`);
       const newPosts = response.data.posts;
-      console.log(newPosts);
       
   
       // Check if there's more data to load
@@ -97,7 +98,7 @@ export default function TechBlog() {
       }
   
     } catch (error) {
-      console.error("Error fetching posts:", error);
+      toast.error('Error Featchin Posts')
     } finally {
       setIsLoading(false);
     }
@@ -133,7 +134,6 @@ export default function TechBlog() {
 
   useEffect(  ()=>{
 
-    console.log(blogs);
     
     fetchData();
     if (currentCategory!=='all') {
