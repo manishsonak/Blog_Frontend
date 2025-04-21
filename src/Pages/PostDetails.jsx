@@ -18,13 +18,12 @@ export default function PostDetails() {
         const token = Cookies.get("token");
         
         const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/posts/${slug}`,{
+          `${import.meta.env.VITE_API_URL}/posts/${slug}`,
+          {
             headers: {
               Authorization: `Bearer ${token}`,
-              },
-          },
-          {
-            withCredentials: true
+            },
+            withCredentials: true,
           }
         );
         
