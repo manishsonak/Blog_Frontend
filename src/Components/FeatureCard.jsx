@@ -3,6 +3,13 @@ import { Link } from 'react-router-dom';
 
 function FeatureCard({category,title,description,image,slug})
 {
+
+  const getPlainText = (htmlString) => {
+    const temp = document.createElement("div");
+    temp.innerHTML = htmlString;
+    return temp.textContent || temp.innerText || "";
+  };
+
   return ( <div className=" max-w-md bg-white rounded-lg w-full shadow-lg overflow-hidden">
   {/* Image placeholder - in a real implementation, this would be your actual image */}
   <div className="w-full h-64 bg-gray-100">
@@ -23,7 +30,7 @@ function FeatureCard({category,title,description,image,slug})
     </h2>
     
     <p className="text-gray-600 mb-5 line-clamp-6">
-    {description}
+    {getPlainText(description).slice(0, 200) + "..."}
     </p>
     
     <Link

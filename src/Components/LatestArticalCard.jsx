@@ -8,6 +8,12 @@ function LatestArticalCard({ category, title, date, readTime, description,slug }
         day: 'numeric',
       });
 
+      const getPlainText = (htmlString) => {
+        const temp = document.createElement("div");
+        temp.innerHTML = htmlString;
+        return temp.textContent || temp.innerText || "";
+      };
+
     return (
       <div className="mb-8 p-4   shadow-md rounded-lg my-2 ">
         {/* Category */}
@@ -27,7 +33,7 @@ function LatestArticalCard({ category, title, date, readTime, description,slug }
         
         {/* Description */}
         <p className="text-gray-600 line-clamp-6">
-          {description}
+        {getPlainText(description).slice(0, 200) + "..."}
         </p>
 
          <Link
