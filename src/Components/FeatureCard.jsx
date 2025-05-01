@@ -23,7 +23,7 @@ function FeatureCard({category,title,description,image,slug})
     </h2>
     
     <p className="text-gray-600 mb-5 line-clamp-6">
-      {description}
+    {description}
     </p>
     
     <Link

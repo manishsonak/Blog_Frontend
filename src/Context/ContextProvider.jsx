@@ -16,6 +16,9 @@ const ContextProvider = ({ children }) => {
     try {
 
       const token = Cookies.get('token');
+      console.log(token);
+      
+      
       const response = await axios.get(
         `${import.meta.env.VITE_API_URL}/users/get-user`,
         {
@@ -48,6 +51,7 @@ const ContextProvider = ({ children }) => {
     const initializeUser = async () => {
 
 
+      console.log(token);
       
       
       if (token) {
@@ -62,6 +66,8 @@ const ContextProvider = ({ children }) => {
   
     initializeUser();
   }, []);
+
+
   return (
     <ContextAPI.Provider
       value={{
