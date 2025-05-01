@@ -46,22 +46,11 @@ const ContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const token = Cookies.get("token");
+
   
     const initializeUser = async () => {
 
-
-      console.log(token);
-      
-      
-      if (token) {
-        
-        return await fetchUser();
-      } else {
-        setUser(null);
-        setIsAuthanticate(false);
-        console.warn("No token found in cookies");
-      }
+         await fetchUser();
     };
   
     initializeUser();
